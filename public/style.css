@@ -1,0 +1,11 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+  /* background-image: url(img/corkboard.jpeg); */
+}
+h1 {
+  color: grey;
+}
+img{
+  height: 200px;
+}
