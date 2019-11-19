@@ -1,3 +1,4 @@
+var ObjectId = require('mongodb').ObjectId
 module.exports = function(app, passport, db) {
 
 // normal routes ===============================================================
@@ -9,7 +10,7 @@ module.exports = function(app, passport, db) {
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-        db.collection('notes').find().toArray((err, result) => {
+        db.collection('notes').find({user: req.user.local.email}).toArray((err, result) => {
           if (err) return console.log(err)
           res.render('profile.ejs', {
             user : req.user,
@@ -27,7 +28,7 @@ module.exports = function(app, passport, db) {
 // message board routes ===============================================================
 
     app.post('/notes', (req, res) => {
-      db.collection('notes').save({title: req.body.noteTitle, notebody: req.body.noteBody}, (err, result) => {
+      db.collection('notes').save({title: req.body.noteTitle, notebody: req.body.noteBody, user: req.body.userName}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/profile')
@@ -55,6 +56,19 @@ module.exports = function(app, passport, db) {
         res.send('Note deleted!')
       })
     })
+    app.get('/users/:userId/books/:bookId', function (req, res) {
+  res.send(req.params)
+})
+
+
+    app.get('/editnote/:note_id', isLoggedIn, function(req, res) {
+      db.collection('notes').findOne({_id: new ObjectId(req.params.note_id)}, (err, databaseResult) =>{
+        res.render('edit.ejs', {
+          note: databaseResult
+        });
+      })
+    });
+
 
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================
