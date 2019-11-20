@@ -39,7 +39,7 @@ module.exports = function(app, passport, db) {
       db.collection('notes')
       .findOneAndUpdate({title: req.body.noteTitle, notebody: req.body.noteBody}, {
         $set: {
-
+            
         }
       }, {
         sort: {_id: -1},
@@ -109,6 +109,7 @@ module.exports = function(app, passport, db) {
     // local -----------------------------------
     app.get('/unlink/local', isLoggedIn, function(req, res) {
         var user            = req.user;
+        user.local.name     = undefined;
         user.local.email    = undefined;
         user.local.password = undefined;
         user.save(function(err) {

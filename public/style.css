@@ -1,15 +1,22 @@
 body{
   padding-top:80px;
   word-wrap:break-word;
-  background-image: url(img/corkboard.jpeg);
+  background-color: #383F51;
 }
 
-.edit-body{
-  background-image: url(img/corkboard.jpeg)!important;
-}
-h1, h2, h3, label, input, span, li, i{
-  color: black;
+h1, h2, h3, label, span, li, i, p{
+  color: #DDDBF1;
 }
 img{
   height: 200px;
+}
+.writeNote{
+  border-right: 1px solid white ;
+}
+.noteTitle{
+  font-size: 25px;
+}
+li {
+  margin-bottom: 2%;
+ 
 }
