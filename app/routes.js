@@ -39,7 +39,7 @@ module.exports = function(app, passport, db) {
       db.collection('notes')
       .findOneAndUpdate({title: req.body.noteTitle, notebody: req.body.noteBody}, {
         $set: {
-          thumbUp:req.body.thumbUp + 1
+
         }
       }, {
         sort: {_id: -1},
@@ -56,9 +56,7 @@ module.exports = function(app, passport, db) {
         res.send('Note deleted!')
       })
     })
-    app.get('/users/:userId/books/:bookId', function (req, res) {
-  res.send(req.params)
-})
+
 
 
     app.get('/editnote/:note_id', isLoggedIn, function(req, res) {

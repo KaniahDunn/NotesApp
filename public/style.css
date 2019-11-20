@@ -1,10 +1,14 @@
 body{
   padding-top:80px;
   word-wrap:break-word;
-  /* background-image: url(img/corkboard.jpeg); */
+  background-image: url(img/corkboard.jpeg);
 }
-h1 {
-  color: grey;
+
+.edit-body{
+  background-image: url(img/corkboard.jpeg)!important;
+}
+h1, h2, h3, label, input, span, li, i{
+  color: black;
 }
 img{
   height: 200px;

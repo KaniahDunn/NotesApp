@@ -1,12 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/style.css">
   </head>
-  <body>
-    <h2><%= note.title %></h2>
-
-    <p><%= note.notebody %></p>
+  <body class="edit-body ">
+    <h1 class="page-header text-center">Edit a Note</h1>
+    <section class="text-center">
+      <h2><%= note.title %></h2>
+      <textarea class="center" name="name" rows="10" cols="50"><%= note.notebody %></textarea>
+    </section>
+    <section class="text-center">
+        <button type="submit" name="button">Save Changes</button>
+    </section>
   </body>
 </html>

@@ -9,11 +9,16 @@
 <body>
 <div class="container">
 
-    <div class="text-left">
+    <div class="text-left page-header">
         <h1>Hello, <%= user.local.email %></h1>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
-    <div class="page-header text-center">
+    <!-- <div class="page-header text-center"> -->
+
+
+
+    <div class="row">
+      <div class="col-sm-6">
         <h2>Create a New Note</h2>
         <% if (user.local.email) { %>
           <form action="/notes" method="POST">
@@ -24,16 +29,7 @@
             <textarea rows="10" cols="50" placeholder="Write a Note" name="noteBody"></textarea>
             <button type="submit">Submit</button>
           </form>
-        </div>
         <% } %>
-
-
-    <div class="row">
-      <div class="col-sm-6">
-        <h3>Notes List Test</h3>
-        <% for(var i=0; i<notes.length; i++) {%>
-          <li><span><%= notes[i].title %></span></li>
-          <% } %>
       </div>
         <div class="col-sm-6">
           <h3>Notes</h3>
