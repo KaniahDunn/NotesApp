@@ -36,8 +36,9 @@ module.exports = function(app, passport, db) {
     })
 
     app.put('/notes', (req, res) => {
+      console.log(req.body.noteTitle, req.body.noteBody)
       db.collection('notes')
-      .findOneAndUpdate({title: req.body.noteTitle}, {
+      .findOneAndUpdate({user: req.body.user},{
         $set: {
           notebody: req.body.noteBody
         }

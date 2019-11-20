@@ -1,25 +1,27 @@
-var edit = document.getElementsByClassName('editButton')
+var edit = document.querySelectorAll('.editButton')
 var trash = document.querySelectorAll('.fa-trash-alt')
 
 
 Array.from(edit).forEach(function(element) {
   element.addEventListener('click', function(){
-    const noteTitle = this.parentNode.parentNode.childNodes[1].innerText
-    console.log(noteTitle)
+    const noteTitle = this.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].innerText
     const noteBody = this.parentNode.childNodes[8].innerText
+    const userName = this.getAttribute("data-user")
+    console.log(userName, noteBody, noteTitle)
     fetch('notes', {
       method: 'put',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         'noteTitle': noteTitle,
         'noteBody': noteBody,
+        'user': userName
       })
     })
     .then(response => {
       if (response.ok) return response.json()
     })
     .then(data => {
-      console.log(data)
+      // console.log(data)
       // window.location.reload(true)
     })
   });
