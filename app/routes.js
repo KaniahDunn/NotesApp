@@ -37,9 +37,9 @@ module.exports = function(app, passport, db) {
 
     app.put('/notes', (req, res) => {
       db.collection('notes')
-      .findOneAndUpdate({title: req.body.noteTitle, notebody: req.body.noteBody}, {
+      .findOneAndUpdate({title: req.body.noteTitle}, {
         $set: {
-            
+          notebody: req.body.noteBody
         }
       }, {
         sort: {_id: -1},

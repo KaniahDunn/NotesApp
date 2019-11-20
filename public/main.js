@@ -1,35 +1,35 @@
-var edit = document.querySelectorAll('.editbutton') 
+var edit = document.getElementsByClassName('editButton')
 var trash = document.querySelectorAll('.fa-trash-alt')
 
 
-Array.from(edit ).forEach(function(element) {
+Array.from(edit).forEach(function(element) {
   element.addEventListener('click', function(){
-    alert('this works')
-  //   const name = this.parentNode.parentNode.childNodes[1].innerText
-  //   const msg = this.parentNode.parentNode.childNodes[3].innerText
-  //   const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
-  //   fetch('notes', {
-  //     method: 'put',
-  //     headers: {'Content-Type': 'application/json'},
-  //     body: JSON.stringify({
-  //       'name': name,
-  //       'msg': msg,
-  //       'thumbUp':thumbUp
-  //     })
-  //   })
-  //   .then(response => {
-  //     if (response.ok) return response.json()
-  //   })
-  //   .then(data => {
-  //     console.log(data)
-  //     window.location.reload(true)
-  //   })
+    const noteTitle = this.parentNode.parentNode.childNodes[1].innerText
+    console.log(noteTitle)
+    const noteBody = this.parentNode.childNodes[8].innerText
+    fetch('notes', {
+      method: 'put',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        'noteTitle': noteTitle,
+        'noteBody': noteBody,
+      })
+    })
+    .then(response => {
+      if (response.ok) return response.json()
+    })
+    .then(data => {
+      console.log(data)
+      // window.location.reload(true)
+    })
   });
 });
 
 Array.from(trash).forEach(function(element){
   element.addEventListener('click', function(){
-    alert('yeah buddy')
+    // const noteTitle = this.parentNode.parentNode.childNodes[1].innerText
+    // const noteBody = this.parentNode.childNodes[8].innerText
+    // console.log(noteBody)
 
   })
 })
