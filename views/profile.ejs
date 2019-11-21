@@ -20,7 +20,7 @@
         <h2>Create a New Note</h2>
         <% if (user.local.email) { %>
         <form action="/notes" method="POST">
-          <input class="userName" type="text" name="userName" value="<%= user.local.email %>" hidden>
+          <input class="userName" type="text" name="userName" value="<%= user.local.email %>">
           <!-- <input class="userName" type="text" name="userName" value="<%= user.local.email %>"> -->
           <label for="noteTitle">Create a Title</label><br>
           <input class="noteTitle" type="text" value="" name="noteTitle"><br>
@@ -37,7 +37,7 @@
           <li class="message">
             <strong><span class="noteTitle"><%= notes[i].title %></span></strong>
             <button data-user="<%= user.local.email %>" class="editButton">Save Changes</button>
-            <i class="far fa-trash-alt"></i><br>
+            <i data-user="<%= user.local.email %>" class="far fa-trash-alt"></i><br>
             <span contenteditable="true" ><%= notes[i].notebody %></span>
           </li>
           <% } %>

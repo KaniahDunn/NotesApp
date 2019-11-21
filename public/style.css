@@ -18,5 +18,8 @@ img{
 }
 li {
   margin-bottom: 2%;
- 
+}
+
+.editbutton{
+  background-color: transparent;
 }

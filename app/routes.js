@@ -38,7 +38,7 @@ module.exports = function(app, passport, db) {
     app.put('/notes', (req, res) => {
       console.log(req.body.noteTitle, req.body.noteBody)
       db.collection('notes')
-      .findOneAndUpdate({user: req.body.user},{
+      .findOneAndUpdate({user: req.body.user, noteTitle: req.body.title},{
         $set: {
           notebody: req.body.noteBody
         }
@@ -52,7 +52,7 @@ module.exports = function(app, passport, db) {
     })
 
     app.delete('/notes', (req, res) => {
-      db.collection('notes').findOneAndDelete({title: req.body.noteTitle, notebody: req.body.noteBody}, (err, result) => {
+      db.collection('notes').findOneAndDelete({user: req.body.user, noteTitle: req.body.title, noteBody: req.body.notebody}, (err, result) => {
         if (err) return res.send(500, err)
         res.send('Note deleted!')
       })
