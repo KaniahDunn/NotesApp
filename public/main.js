@@ -7,22 +7,22 @@ Array.from(edit).forEach(function(element) {
     const noteTitle = this.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].innerText
     const noteBody = this.parentNode.childNodes[8].innerText
     const userName = this.getAttribute("data-user")
-    console.log(userName)
+    console.log(noteTitle)
     fetch('notes', {
       method: 'put',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         'noteTitle': noteTitle,
         'noteBody': noteBody,
-        'user': userName
+        'user' : userName
       })
     })
     .then(response => {
       if (response.ok) return response.json()
     })
     .then(data => {
-      // console.log(data)
-      // window.location.reload(true)
+      console.log(data)
+      window.location.reload(true)
     })
   });
 });
